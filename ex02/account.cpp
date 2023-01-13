@@ -8,16 +8,11 @@ int     Account::_totalAmount = 0;
 int     Account::_totalNbDeposits = 0;
 int     Account::_totalNbWithdrawals = 0;
 //gettir bir mutluluk
-int	Account::checkAmount(void) const
-{
-	return (this->_amount);
-}
-int get_time(){
-    std::time_t now = std::time(nullptr);
-    std::cout << "Current time: " << std::ctime(&now) << std::endl;
-    return 0;
-}
-
+int	Account::checkAmount(void) const{return (this->_amount);}
+int	Account::getNbAccounts( void ) {return (Account::_nbAccounts);}
+int	Account::getTotalAmount(void){return (Account::_totalAmount);}
+int	Account::getNbDeposits(void){return (Account::_totalNbDeposits);}
+int	Account::getNbWithdrawals( void ){return (Account::_totalNbWithdrawals);}
 void	Account::_displayTimestamp(void)
 {
 	time_t	now;
@@ -27,7 +22,21 @@ void	Account::_displayTimestamp(void)
 }
 
 //int	Account::getNbDeposits(void){return(this->_nbDeposits);}
+void	Account::displayStatus(void) const {
+	_displayTimestamp();
+	std::cout	<< "accounts:" << _accountIndex << ";total:" << _amount
+				<< ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals
+				<< std::endl;
+}
 
+void Account::displayAccountsInfos(void)
+{
+	Account::_displayTimestamp();
+	std::cout << "accounts:" << _nbAccounts << ";total:" 
+	<< Account::_totalAmount << ";deposits:" 
+	<< Account::_totalNbDeposits << ";withdrawals:" 
+	<< Account::_totalNbWithdrawals << std::endl;
+}
 
 void	Account::makeDeposit(int deposit)
 {
@@ -74,6 +83,9 @@ Account::~Account()
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include "account.hpp"
+
+
 int		main( void ) {
 	typedef std::vector<Account::t>							  accounts_t;
 	typedef std::vector<int>								  ints_t;
@@ -97,7 +109,8 @@ int		main( void ) {
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
 
-	
+	Account::displayAccountsInfos();
+	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, dep_begin );
 		  it.first != acc_end && it.second != dep_end;
@@ -106,7 +119,8 @@ int		main( void ) {
 		(*(it.first)).makeDeposit( *(it.second) );
 	}
 
-	
+	Account::displayAccountsInfos();
+	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, wit_begin );
 		  it.first != acc_end && it.second != wit_end;
@@ -115,8 +129,8 @@ int		main( void ) {
 		(*(it.first)).makeWithdrawal( *(it.second) );
 	}
 
-	
+	Account::displayAccountsInfos();
+	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	return 0;
 }
-
