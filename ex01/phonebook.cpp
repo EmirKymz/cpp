@@ -23,17 +23,19 @@ void phonebook::add()
 {
 a:
 	std::cout << "Please write Name : ";
-    if (!people[index % 8].set_name(takestring()))
+    if (!people[index].set_name(takestring()))
     {
         std::cout << "You have to submit a name" << std::endl;
         goto a;
     }
-	std::cout << "Please write Surname : "; people[index % 8].set_surname(takestring());
-	std::cout << "Please write Nickname : "; people[index % 8].set_nick(takestring());
-	std::cout << "Please write Phone Number: "; people[index % 8].set_num(takestring());
-	std::cout << "Please write Darkest Secret : "; people[index % 8].set_secret(takestring());
+	std::cout << "Please write Surname : "; people[index].set_surname(takestring());
+	std::cout << "Please write Nickname : "; people[index].set_nick(takestring());
+	std::cout << "Please write Phone Number: "; people[index].set_num(takestring());
+	std::cout << "Please write Darkest Secret : "; people[index].set_secret(takestring());
     std::cout << "\n===Contact added successfully===\n";
 	index++;
+    if (fixed <= 7)
+        fixed++;
     if (index == 8)
         this->index = 0;
 }
@@ -111,9 +113,11 @@ void phonebook::checkerv1()
         return ;
     }
 a:
+    if(fixed == 0){std::cout << "You don't have a index\n"; return ;}
     std::cout << "\nPlease press index number" << std::endl;
 	int i = this->getnuminput();
-    if (i >= 0 && i <= 7)
+    
+    if ((i >= 0 && i <= 7) && i < fixed)
     {
 	std::cout << "Name : " << people[i].get_name() << std::endl;
 	std::cout << "Surname : " << people[i].get_surname() << std::endl;
