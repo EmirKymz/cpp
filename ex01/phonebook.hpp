@@ -37,6 +37,7 @@ class phonebook {
 public:
     contact people[8];
     int index;
+    int fixed;
 
     //functions
     int getnuminput();

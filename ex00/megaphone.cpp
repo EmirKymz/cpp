@@ -11,10 +11,7 @@ int main(int ac, char **av)
 	while(av[++i]){
 		n = -1;
         while(av[i][++n] && ac >= 2){
-            if(av[i][n] <= 'z' && av[i][n] >= 'a')
-                std::cout << (char)std::toupper(av[i][n]);
-            else
-                std::cout << av[i][n];
+            std::cout << (char)std::toupper(av[i][n]);
     	}
 		if(av[i + 1])
 			std::cout << " ";

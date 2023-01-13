@@ -42,6 +42,7 @@ int main()
 {
 	phonebook book;
 	book.index = 0;
+	book.fixed = 0;
 
 	while (1)
 	{
