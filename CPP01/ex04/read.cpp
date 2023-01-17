@@ -17,7 +17,7 @@ void readfile(char **av){
     std::string s1(av[2]);
     std::string s2(av[3]);
     std::ifstream originalFile(filename);
-    std::ofstream copyFile("copy.txt");
+    std::ofstream copyFile(filename.append(".replace"));
     std::string line;
 
     if(originalFile.is_open()){
