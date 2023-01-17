@@ -1,38 +1,24 @@
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
-
-Weapon::Weapon(){}
-Weapon::Weapon(std::string _type) : &type(_type) {}
-Weapon::~Weapon(){}
-HumanA::~HumanA(){}
-
-std::string Weapon::getType() const{return(this->type);}
-
-void Weapon::setType(std::string _type)
-{
-    this->type = _type;
-}
-void HumanA::attack(void) const
-{
-    std::cout << this->name << " attacks with their " << this->Weapons.getType() << std::endl;
-}
-
-void HumanB::attack(void) const
-{
-    std::cout << this->name << " attacks with their " << this->Weapons.getType() << std::endl;
-}
-
-HumanA::HumanA(){}
-HumanA::HumanA(std::string _name, Weapon _Weapons) : name(_name), Weapons(_Weapons){}
+#include "unistd.h"
 
 int main()
 {
-    std::string tmp;
-    Weapon club = Weapon("crude spiked club");
-    HumanA Bob("Bob", club);
-    Bob.attack();
-    club.setType("some other type of club");
-    Bob.attack();
+{
+Weapon club = Weapon("crude spiked club");
+HumanA bob("Bob", club);
+bob.attack();
+club.setType("some other type of club");
+bob.attack();
+}
+{
+Weapon club = Weapon("crude spiked club");
+HumanB jim("Jim");
+jim.setWeapon(club);
+jim.attack();
+club.setType("some other type of club");
+jim.attack();
+}
 return 0;
 }
