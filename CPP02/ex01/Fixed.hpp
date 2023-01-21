@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <cmath>
 
 class Fixed {
 	private:
@@ -10,12 +11,16 @@ class Fixed {
 	public:
 		Fixed();
 		Fixed(const Fixed&);
+		Fixed(const int);
+		Fixed(const float);
 		Fixed& operator=(const Fixed&);
 		~Fixed();
+
 		int getRawBits(void) const;
 		void setRawBits(int const);
-        const int frac = 8;
-        const float num; //???? sor
+		
         float toFloat(void) const;
         int toInt(void) const;
 };
+
+std::ostream & operator<<(std::ostream &o, const Fixed &f);
