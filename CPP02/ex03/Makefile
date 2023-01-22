@@ -1,5 +1,5 @@
-NAME = megaphone
-CC = g++ -std=c++98
+NAME = bsp
+CC = c++ -std=c++98
 CFLAGS = -Wall -Wextra -Werror
 SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
@@ -17,7 +17,8 @@ $(OBJ) :
 clean :
 		@rm -rf $(OBJ)
 
-fclean :
+fclean : clean
 		@rm -rf $(NAME)
-
+run : all
+	./$(NAME)
 re : fclean all

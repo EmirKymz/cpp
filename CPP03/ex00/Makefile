@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = fightv0.0
 CC = g++ -std=c++98
 CFLAGS = -Wall -Wextra -Werror
 SRC = $(wildcard *.cpp)
@@ -17,7 +17,8 @@ $(OBJ) :
 clean :
 		@rm -rf $(OBJ)
 
-fclean :
+fclean : clean
 		@rm -rf $(NAME)
-
+run : all
+	./$(NAME)
 re : fclean all
