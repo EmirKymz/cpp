@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/22 03:54:19 by ekaymaz           #+#    #+#             */
+/*   Updated: 2023/01/22 03:54:27 by ekaymaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <string>
@@ -15,9 +27,3 @@ class Fixed {
 		int getRawBits(void) const;
 		void setRawBits(int const);
 };
-
-/* int a pointer adrewsi 0x777
-
-&a pointer adresi 0x777
-
-*a pointer adresi 0x770 */

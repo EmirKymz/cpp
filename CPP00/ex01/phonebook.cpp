@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/21 22:31:02 by ekaymaz           #+#    #+#             */
+/*   Updated: 2023/01/22 01:04:12 by ekaymaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phonebook.hpp"
 
 std::string contact::get_name() {return (this->first_name);}
@@ -125,6 +137,9 @@ a:
 	std::cout << "Phone Number : " << people[i].get_num() << std::endl;
 	std::cout << "Darkest Secret : " << people[i].get_secret() << std::endl;
     }
-    else 
+    else{
+        std::cout << "Empty" << std::endl;
         goto a;
+    } 
+        
 }

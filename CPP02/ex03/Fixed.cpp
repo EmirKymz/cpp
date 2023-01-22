@@ -6,34 +6,28 @@
 /*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 04:30:37 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/01/22 04:30:38 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/01/22 04:31:43 by ekaymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 //constructor destructor vs
-Fixed::Fixed() : _fixed(0)
-{std::cout << "Default constructor called" << std::endl;}
+Fixed::Fixed() : _fixed(0){}
 
-Fixed::Fixed(const Fixed& copy) : _fixed(copy.getRawBits())
-{std::cout << "Copy constructor called" << std::endl;}
+Fixed::Fixed(const Fixed& copy) : _fixed(copy.getRawBits()){}
 
-Fixed::Fixed(const int nbr) : _fixed(nbr << _fractional) 
-{std::cout << "Int constructor called" << std::endl;}
+Fixed::Fixed(const int nbr) : _fixed(nbr << _fractional) {}
 
-Fixed::Fixed(const float nbr) : _fixed(roundf(nbr * (1 << _fractional)))
-{std::cout << "Float constructor called" << std::endl;}
+Fixed::Fixed(const float nbr) : _fixed(roundf(nbr * (1 << _fractional))){}
 
 Fixed& Fixed::operator=(const Fixed& nbr){
-	std::cout << "Copy assigment operator called" << std::endl;
 	if(this != &nbr)
 		_fixed = nbr.getRawBits();
 	return(*this);
 }
 
-Fixed::~Fixed()
-{std::cout << "Destructor called" << std::endl;}
+Fixed::~Fixed(){}
 
 //gettr settr
 int Fixed::getRawBits(void) const {return(this->_fixed);}
