@@ -6,17 +6,19 @@
 /*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 03:54:16 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/01/22 03:54:17 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/03/01 21:30:21 by ekaymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 Fixed::Fixed() : _fixed(0) {std::cout << "Default constructor called" << std::endl;}
+
 Fixed::Fixed(const Fixed& obj){
     std::cout << "Copy constructor called" << std::endl;
     *this = obj;
 }
+
 Fixed& Fixed::operator=(const Fixed &obj)
 {
     std::cout << "Copy assignment operator called" << std::endl;

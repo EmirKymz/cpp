@@ -6,7 +6,7 @@
 /*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 03:54:58 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/01/22 04:26:32 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/03/01 22:06:09 by ekaymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int main( void ) {
 Fixed a;
-Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+Fixed const b( Fixed( 5.05f ) / Fixed( 2 ) );
+Fixed const c(Fixed( 123 ) < Fixed( 125 ));
+std::cout << c << std::endl;
 std::cout << a << std::endl;
 std::cout << ++a << std::endl;
 std::cout << a << std::endl;
 std::cout << a++ << std::endl;
 std::cout << a << std::endl;
 std::cout << b << std::endl;
-std::cout << Fixed::max( a, b ) << std::endl;
+std::cout << Fixed::min( a, b ) << std::endl;
 return 0;
 }

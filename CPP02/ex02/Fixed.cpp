@@ -6,7 +6,7 @@
 /*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 04:30:37 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/01/22 04:30:38 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/03/01 22:09:01 by ekaymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Fixed::Fixed() : _fixed(0)
 {std::cout << "Default constructor called" << std::endl;}
 
-Fixed::Fixed(const Fixed& copy) : _fixed(copy.getRawBits())
+Fixed::Fixed(const Fixed& copy): _fixed(copy.getRawBits())
 {std::cout << "Copy constructor called" << std::endl;}
 
 Fixed::Fixed(const int nbr) : _fixed(nbr << _fractional) 

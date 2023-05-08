@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 
-int main(){
+/* int main(){
 
     float a(0.00000005);
     std::cout<< std::fixed << a << std::endl;
@@ -15,7 +15,7 @@ int main(){
     std::cout << std::oct << c << std::endl;
     std::cout << std::uppercase << std::hex << c << std::endl;
     std::cout << std::nouppercase;
-}
+} */
 
  
 
@@ -38,3 +38,11 @@ while ((pos = line.find(s2, pos)) != std::string::npos) {
     pos += s3.length();
 }
 std::cout << line << std::endl; */
+
+int main()
+{
+    std::string a;
+    a = "deneme";
+    a.append("emir");
+    std::cout << a << std::endl;
+}

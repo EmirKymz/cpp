@@ -6,7 +6,7 @@
 /*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:31:02 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/01/22 01:04:12 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/03/03 20:35:15 by ekaymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ char isten(std::string check, int flag)
         if(check.length() == 10)
             return(check.at(9));
         return('.');}
-    if(flag == 2 && check.length() < 10){return(' ');}
+    if(flag == 2 && check.length() < 10){
+        return(' ');
+        }
     return(0);
 }
 

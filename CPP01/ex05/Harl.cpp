@@ -6,7 +6,7 @@
 /*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 01:34:00 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/01/22 01:34:01 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:54:35 by ekaymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ void Harl::complain(std::string level)
 	};
     std::string a[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     for (int i = 0; i < 4; i++)
-    {
         if (!level.compare(a[i]))
             (b.*function[i])();
-    }
 }
 
