@@ -1,4 +1,4 @@
-NAME = fightv0.0
+NAME = ClapTrap
 CC = g++ -std=c++98
 CFLAGS = -Wall -Wextra -Werror
 SRC = $(wildcard *.cpp)

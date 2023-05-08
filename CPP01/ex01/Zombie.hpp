@@ -6,7 +6,7 @@
 /*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 01:32:41 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/01/22 01:32:42 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/02/28 22:25:47 by ekaymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 #include <string>
 
 class Zombie {
+    private:
+        const std::string Name;
+        
     public:
     Zombie();
     Zombie(std::string name);
     void announce( void ) const;
-
-    private:
-        mutable std::string Name;
 };
 
     void start_horde(void);

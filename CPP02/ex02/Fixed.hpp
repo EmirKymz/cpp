@@ -6,7 +6,7 @@
 /*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 03:54:54 by ekaymaz           #+#    #+#             */
-/*   Updated: 2023/01/22 03:54:55 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2023/03/01 21:55:55 by ekaymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,15 @@ class Fixed {
         //assignment operator
         Fixed& operator=(const Fixed&);
 
-        //min max
-        static const Fixed& min(const Fixed &, const Fixed &);
-        static const Fixed& max(const Fixed &, const Fixed &);
-
         //++ --
         Fixed &operator++(void);
         Fixed operator++(int);
         Fixed &operator--(void);
         Fixed operator--(int);
 
-
-
+        //min max
+        static const Fixed& min(const Fixed &, const Fixed &);
+        static const Fixed& max(const Fixed &, const Fixed &);
 
 		int getRawBits(void) const;
 		void setRawBits(int const);
