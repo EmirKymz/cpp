@@ -17,6 +17,7 @@ void Bureaucrat::setGrade(int _grade){
 	}
 }
 
+
 int Bureaucrat::getGrade(void) const{
     return(this->Grade);
 }
@@ -62,3 +63,13 @@ void Bureaucrat::setName(std::string _name) {
 }
 
 Bureaucrat::~Bureaucrat() { std::cout << "default deconstructor called" << std::endl;}
+
+void	Bureaucrat::signForm(Form& c) {
+	if (c.getmustGrade() < this->getGrade()) {
+		std::cout << this->getName() << " couldn't sign " << c.getName() << " because " << std::endl;
+		throw GradeTooLowException();
+	} else {
+		c.setisSigned(1);
+		std::cout << this->getName() << " signed " << c.getName() << std::endl;
+	}
+}

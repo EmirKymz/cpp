@@ -1,49 +1,20 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void)
 {
-	Bureaucrat b1("b1", 150);
-	Bureaucrat b2("b2", 1);
-	Bureaucrat b3("b3", 10);
-	Bureaucrat b4(b3);
-	b4 = b2;
-
-	std::cout << std::endl;
-	
-	try
-	{
-		Bureaucrat b6("b6", 155);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	Bureaucrat b1("b1", 99);
+	Bureaucrat b2("b2", 10);
 
 	try
 	{
-		Bureaucrat b7("b7", 0);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+		std::cout << "=========Test 1=========" << std::endl;
+		Form f1("f1", 51, 70);
+		Form f2("f2", 100, 151);
 
-	std::cout << std::endl;
-
-	std::cout << b1 << std::endl;
-	std::cout << b2 << std::endl;
-	std::cout << b3 << std::endl;
-	std::cout << b4 << std::endl;
-	std::cout << std::endl;
-
-	try
-	{
-
-		std::cout << "************TEST1***********" << std::endl;
-		b1.decrement();
-
-		std::cout << b1 << std::endl;
-
+		std::cout << f1 << std::endl;
+		std::cout << std::endl;
+		std::cout << f2 << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -54,40 +25,41 @@ int main(void)
 
 	try
 	{
-		std::cout << "***********TEST2************" << std::endl;
-		b2.increment();
-		std::cout << b2 << std::endl;
+		std::cout << "=========Test 2=========" << std::endl;
+		Form f3("f3", 50, 30);
+		Form f4 = f3;
+		f3.beSigned(b1);
+		f4.beSigned(b2);
+
+		b1.signForm(f3);
+		b2.signForm(f4);
+		std::cout << std::endl;
+
+		std::cout << f3 << std::endl;
+		std::cout << std::endl;
+		std::cout << f4 << std::endl;
+		std::cout << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
-	std::cout << std::endl;
 
 	try
 	{
-		std::cout << "************TEST3***********" << std::endl;
-		b3.increment();
-		std::cout << b3 << std::endl;
+		std::cout << "=========Test 2=========" << std::endl;
+		Form f5("f5", 50, 11);
+		f5.beSigned(b2);
+
+		b2.signForm(f5);
+		std::cout << std::endl;
+
+		std::cout << f5 << std::endl;
+		std::cout << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
-	std::cout << std::endl;
-
-	try
-	{
-		std::cout << "************TEST4***********" << std::endl;
-		b4.decrement();
-		std::cout << b4 << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cout << std::endl;
 	return 0;
 }

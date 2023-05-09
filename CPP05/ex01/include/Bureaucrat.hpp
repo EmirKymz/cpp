@@ -4,6 +4,10 @@
 #include <string>
 #include "Form.hpp"
 
+#define green "\033[1;32m"
+#define red "\033[1;31m"
+#define white "\033[0m"
+
 class Form;
 
 class Bureaucrat {
@@ -12,8 +16,9 @@ class Bureaucrat {
         const std::string Name;
     public:
 
-        void increment(void);
-        void decrement(void);
+        void    increment(void);
+        void    decrement(void);
+        void    signForm(Form& c);
 
         Bureaucrat(const std::string _name, int _grade);
         Bureaucrat(const Bureaucrat& copy);

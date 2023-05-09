@@ -4,22 +4,28 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+#define green "\033[1;32m"
+#define red "\033[1;31m"
+#define white "\033[0m"
+
 class Bureaucrat;
 
-class Form {
+class AForm {
 private:
 	const std::string	name;
 	bool        		isSigned;
 	const int   		mustGrade;
 	const int			mustExecute;
 public:
-	Form(std::string _name, int _mustGrade, int _mustExecute);
-	Form(Form& c);
-	~Form();
+	AForm();
+	AForm(std::string _name, int _mustGrade, int _mustExecute);
+	AForm(AForm& c);
+	virtual ~AForm();
 
-	Form& operator=(Form& c);
+	AForm& operator=(AForm& c);
 
 	void	beSigned(Bureaucrat& c);
+	virtual void	execute(const Bureaucrat& executer) const = 0;
 
 	const std::string	getName() const;
 	bool       			getSigned() const;
@@ -41,4 +47,4 @@ public:
 	};
 };
 
-std::ostream& operator<<(std::ostream& o, Form& n);
+std::ostream& operator<<(std::ostream& o, AForm& n);
