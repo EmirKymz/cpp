@@ -1,6 +1,12 @@
 #include "Form.hpp"
 
+Form::Form(): mustGrade(0), mustExecute(0) {
+	std::cout << green << "Form constructor" << white << std::endl;
+}
+
 Form::Form(std::string _name, int _mustGrade, int _mustExecute): isSigned(0), mustGrade(_mustGrade), mustExecute(_mustExecute) {
+	this->setmustGrade(_mustGrade);
+	this->setmustExecute(_mustExecute);
 	this->setName(_name);
 	std::cout << green << "Form constructor" << white << std::endl;
 }
@@ -25,14 +31,19 @@ void	Form::beSigned(Bureaucrat& c) {
 	if (c.getGrade() > this->getmustGrade()) {
 		throw GradeTooLowException();
 	} else {
+		this->setisSigned(1);
 		std::cout << this->getName() << ", signed from " << c.getName() << std::endl;
 	}
 }
 
+void	Form::execute(const Bureaucrat& executer) const {
+	std::cout << this->getName() << ", executed from " << executer.getName();
+}
+
 const std::string	Form::getName() const {return this->name;}
-bool		    	Form::getSigned() const {return this->isSigned;}
-int			        Form::getmustGrade() const {return this->mustGrade;}
-int			        Form::getmustExecute() const {return this->mustExecute;}
+bool				Form::getSigned() const {return this->isSigned;}
+int					Form::getmustGrade() const {return this->mustGrade;}
+int					Form::getmustExecute() const {return this->mustExecute;}
 
 
 void	Form::setName(std::string nameTmp) { const_cast<std::string&>(this->name) = const_cast<std::string&>(nameTmp); }
