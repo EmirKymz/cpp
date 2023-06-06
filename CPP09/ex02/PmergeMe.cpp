@@ -1,6 +1,6 @@
 #include "PmergeMe.hpp"
-#define BUG
-PmergeMe::PmergeMe(int ac, char **av) {
+
+PmergeMe::PmergeMe(int ac, char *av[]) {
     for (int i = 1; i < ac; i++) {
         int av_num = atoi(av[i]);
         if (av_num < 0)
@@ -112,6 +112,13 @@ void PmergeMe::mergeVector(void) {
 #endif
 }
 
+void    print(std::deque<int> &list, std::string name) {
+    std::cout << name;
+    for(std::deque<int>::iterator it = list.begin(); it != list.end(); it++)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}
+
 //deque
 void PmergeMe::merge(std::deque<int>& left, std::deque<int>& right, std::deque<int>& result) {
     while (!left.empty() && !right.empty()) {
@@ -131,6 +138,9 @@ void PmergeMe::merge(std::deque<int>& left, std::deque<int>& right, std::deque<i
         result.push_back(right.front());
         right.pop_front();
     }
+#ifdef PRINT
+    print(result, "merged result : ");
+#endif
 }
 
 void PmergeMe::mergeInsertionSort(std::deque<int>& values) {
@@ -150,6 +160,10 @@ void PmergeMe::mergeInsertionSort(std::deque<int>& values) {
 
     mergeInsertionSort(left);
     mergeInsertionSort(right);
+#ifdef PRINT
+    print(left, "left : ");
+    print(right, "right : ");
+#endif
     merge(left, right, result);
 
 	std::copy(result.begin(), result.end(), values.begin());

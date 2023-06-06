@@ -9,7 +9,7 @@
 
 class PmergeMe {
     public:
-        PmergeMe(int ac, char **av);
+        PmergeMe(int ac, char *av[]);
         ~PmergeMe() {}
         void Info_begin(void);
         //Deque
