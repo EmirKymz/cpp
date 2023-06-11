@@ -175,7 +175,7 @@ void PmergeMe::mergeDeque(void) {
         std::cout << *i << " ";
     }
     std::cout << std::endl;
-#endif
+#endif 
     std::clock_t start = std::clock();
     mergeInsertionSort(deque_num);
     std::clock_t end = std::clock();

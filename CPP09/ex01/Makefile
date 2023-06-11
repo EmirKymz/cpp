@@ -1,5 +1,4 @@
-NAME = PmergeMe
-
+NAME = RPN
 SRC_DIR = src/
 OBJ_DIR = obj/
 INC_DIR = include/
@@ -8,7 +7,7 @@ SRC_FILES 	:= $(wildcard $(SRC_DIR)*.cpp)
 OBJ_FILES  	:= $(patsubst $(SRC_DIR)%.cpp,%.o,$(SRC_FILES))
 
 CC = g++ -std=c++98
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Wshadow
 SRC      	= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ			=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
