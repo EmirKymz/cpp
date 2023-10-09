@@ -35,3 +35,44 @@ double BitcoinExchange::give_back_data(std::string key, double value) {
         return((--it)->second * value);
     return(0);
 }
+
+bool    BitcoinExchange::DateCheck(std::string key_s) {
+    std::string date_day;
+    std::string date_month;
+    std::string date_year;
+    size_t pos1;
+    size_t pos2;
+
+    pos1 = key_s.find("-");
+    date_year = key_s.substr(0, pos1);
+    pos2 = key_s.find("-", pos1 + 1);
+    date_month = key_s.substr(pos1 + 1, pos2 - pos1 - 1);
+    date_day = key_s.substr(pos2 + 1);
+    if(date_year.length() == 4 || date_month.length() == 2 || date_day.length() == 2) {
+        if(std::atoi(date_year.c_str()) <= 2008)
+            ;
+        else if(std::atoi(date_month.c_str()) > 12 || std::atoi(date_month.c_str()) < 1)
+            ;
+		else if(std::atoi(date_day.c_str()) > 31 || std::atoi(date_day.c_str()) < 1 )
+            ;
+		else if(std::atoi(date_year.c_str()) == 2009 && std::atoi(date_month.c_str()) == 1 && std::atoi(date_day.c_str()) == 1)
+            ;
+		else if(std::atoi(date_year.c_str()) == 2022) {
+                if(std::atoi(date_month.c_str()) == 3)
+			{
+				if(std::atoi(date_day.c_str()) > 29)
+                    ;
+			}
+			else if(std::atoi(date_month.c_str()) > 3)
+                ;
+		}
+		else if(std::atoi(date_year.c_str()) > 2022)
+            ;
+		else
+			return (true);
+		return (false);
+	}
+	else
+		return (false);
+}
+

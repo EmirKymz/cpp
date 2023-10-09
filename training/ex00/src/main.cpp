@@ -25,7 +25,10 @@ int main(int ac, char **av)
                         std::cerr << "Error: bad input => " << line << std::endl;
                         continue;
                     }
-
+                    if(btc.DateCheck(key_s) == false) {
+                        std::cerr << "Error: Wrong Date => " << key_s << std::endl;
+                        continue;
+                    }
                     double value;
                     try {
                     std::stringstream vs(value_s);

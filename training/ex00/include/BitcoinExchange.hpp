@@ -14,7 +14,8 @@ class BitcoinExchange {
 
         void readData();
         //void printData();
-        double give_back_data(std::string key, double value);
+        bool    DateCheck(std::string key_s);
+        double  give_back_data(std::string key, double value);
         class FileNotOpen : public std::exception {
             public:
                 const char *what() const throw() {
