@@ -82,13 +82,15 @@ void PmergeMe::mergeInsertionSort(std::vector<int>& data, std::vector<int>& temp
 }
 
 void PmergeMe::mergeVector(void) {
-    struct timeval  tv1, tv2;
-    gettimeofday(&tv1, NULL);
+    // struct timeval  tv1, tv2;
+    // gettimeofday(&tv1, NULL);
+    clock_t start_time = clock();
     std::vector<int> temp(vec_num.size());
     mergeInsertionSort(vec_num, temp, 0, vec_num.size() - 1);
-    gettimeofday(&tv2, NULL);
+    clock_t end_time = clock();
+    // gettimeofday(&tv2, NULL);
     Info_begin(1);
-    printtime(tv1, tv2, "vector : ");
+    printtime(start_time, end_time, "vector : ");
 }
 
 //deque
@@ -132,9 +134,9 @@ void PmergeMe::mergeInsertionSort(std::deque<int>& values) {
     std::copy(result.begin(), result.end(), values.begin());
 }
 
-void PmergeMe::printtime(timeval tv1, timeval tv2, std::string cont) {
-    std::cout << "Time to process a range of " << ac << " elements with std::" << cont << std::fixed <<(double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
-     (double) (tv2.tv_sec - tv1.tv_sec) << " us" << std::endl;
+void PmergeMe::printtime(clock_t start_time, clock_t end_time, std::string cont) {
+    double elapsed_time = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC * 1000.0;
+    std::cout << "Time to process a range of " << ac << " elements with std::" << cont << elapsed_time << " us." << std::endl;
 }
 
 void PmergeMe::mergeDeque(void) {
@@ -142,11 +144,13 @@ void PmergeMe::mergeDeque(void) {
         std::cout << *i << " ";
     }
     std::cout << std::endl; */
-    struct timeval  tv1, tv2;
-    gettimeofday(&tv1, NULL);
+    /* struct timeval  tv1, tv2;
+    gettimeofday(&tv1, NULL); */
+    clock_t start_time = clock();
     mergeInsertionSort(deq_num);
-    gettimeofday(&tv2, NULL);
-    printtime(tv1, tv2, "deque : ");
+    clock_t end_time = clock();
+    // gettimeofday(&tv2, NULL);
+    printtime(start_time, end_time, "deque : ");
     /* for (std::deque<int>::iterator i = deq_num.begin(); i != deq_num.end(); i++) {
         std::cout << *i << " ";
     }

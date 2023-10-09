@@ -4,9 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <deque>
-#include <cstdlib>
 #include <sys/time.h>
-#include <cstdio>
+#include <ctime>
 
 class PmergeMe {
     private:
@@ -16,7 +15,7 @@ class PmergeMe {
     public:
         PmergeMe(int ac, char **av);
         void Info_begin(int flag);
-        void printtime(timeval tv1, timeval tv2, std::string cont);
+        void printtime(clock_t start_time, clock_t end_time, std::string cont);
         ~PmergeMe() {}
 
         //Deque
