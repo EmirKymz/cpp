@@ -4,6 +4,9 @@ double RPN::evaluate(const std::string& expr) {
     std::istringstream iss(expr);
     std::string token;
     while(iss >> token) {
+        if(token.length() > 1) {
+            throw std::runtime_error("Error: Only between 0-9");
+        }
         if(isdigit(token[0])) {
             std::stringstream ss(token);
             double value;

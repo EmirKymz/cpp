@@ -33,7 +33,7 @@ double BitcoinExchange::give_back_data(std::string key, double value) {
     std::map<std::string, double>::iterator it = data.upper_bound(key);
     if (it != data.begin())
         return((--it)->second * value);
-    return(0);
+    return(0);  // burada datanin beginincisi * value yapsam mi
 }
 
 bool    BitcoinExchange::DateCheck(std::string key_s) {
@@ -76,3 +76,11 @@ bool    BitcoinExchange::DateCheck(std::string key_s) {
 		return (false);
 }
 
+bool BitcoinExchange::AlphCheck(std::string value) {
+    for(unsigned long i = 0; i < value.length(); i++) {
+        if(isalpha(value[i])){
+           return(false); 
+        }
+    }
+    return(true);
+}

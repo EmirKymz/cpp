@@ -2,7 +2,7 @@
 
 PmergeMe::PmergeMe(int ac, char **av) {
     for(int i = 1; i < ac; i++) {
-        int av_num = atoi(av[i]);      
+        int av_num = atoi(av[i]);
         if(av_num < 0) {
             std::cerr << "Error: Negative Numbers are forbidden" << std::endl;
             exit(EXIT_FAILURE);
@@ -114,6 +114,13 @@ void PmergeMe::merge(std::deque<int>& left, std::deque<int>& right, std::deque<i
     }
 }
 
+void print(std::deque<int>& d) {
+    std::deque<int>::iterator it = d.begin();
+    for(;it!=d.end(); it++) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
 
 void PmergeMe::mergeInsertionSort(std::deque<int>& values) {
     if(values.size() < 2){
@@ -131,6 +138,10 @@ void PmergeMe::mergeInsertionSort(std::deque<int>& values) {
     mergeInsertionSort(left);
     mergeInsertionSort(right);
     merge(left, right, result);
+    std::cout << "value ";
+    print(values);
+    std::cout << "result ";
+    print(result);
     std::copy(result.begin(), result.end(), values.begin());
 }
 
