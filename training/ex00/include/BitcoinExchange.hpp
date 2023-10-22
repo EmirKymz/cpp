@@ -12,8 +12,12 @@ class BitcoinExchange {
         std::map<std::string, double> data;
         std::map<std::string, double> exchange;
 
+        BitcoinExchange();
+        ~BitcoinExchange();
+        BitcoinExchange(const BitcoinExchange &b);
+        BitcoinExchange& operator=(const BitcoinExchange &b);
+
         void readData();
-        //void printData();
         bool    DateCheck(std::string key_s);
         bool    AlphCheck(std::string value);
         double  give_back_data(std::string key, double value);

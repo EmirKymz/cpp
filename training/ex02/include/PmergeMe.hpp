@@ -13,10 +13,14 @@ class PmergeMe {
         std::deque<int> deq_num;
         int ac;
     public:
+        PmergeMe();
+        ~PmergeMe();
+        PmergeMe(const PmergeMe &p);
+        PmergeMe& operator=(const PmergeMe &p);
+        
         PmergeMe(int ac, char **av);
         void Info_begin(int flag);
         void printtime(clock_t start_time, clock_t end_time, std::string cont);
-        ~PmergeMe() {}
 
         //Deque
         void mergeDeque(void);

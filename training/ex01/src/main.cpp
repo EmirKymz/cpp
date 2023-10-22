@@ -9,9 +9,8 @@ int main(int ac, char* av[]) {
     try {
         double result = rpn.evaluate(av[1]);
         std::cout << result << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
-        return 1;
+    } catch (MyExc e) {
+        std::cout << e.what();
     }
     return 0;
 }

@@ -1,5 +1,18 @@
 #include "PmergeMe.hpp"
 
+PmergeMe::PmergeMe() {}
+PmergeMe::~PmergeMe() {}
+
+PmergeMe::PmergeMe(const PmergeMe &p) {
+    *this = p;
+}
+
+PmergeMe& PmergeMe::operator=(const PmergeMe &p) {
+    this->vec_num = p.vec_num;
+    this->deq_num = p.deq_num;
+    return *this;
+}
+
 PmergeMe::PmergeMe(int ac, char **av) {
     for(int i = 1; i < ac; i++) {
         int av_num = atoi(av[i]);
@@ -82,13 +95,10 @@ void PmergeMe::mergeInsertionSort(std::vector<int>& data, std::vector<int>& temp
 }
 
 void PmergeMe::mergeVector(void) {
-    // struct timeval  tv1, tv2;
-    // gettimeofday(&tv1, NULL);
     clock_t start_time = clock();
     std::vector<int> temp(vec_num.size());
     mergeInsertionSort(vec_num, temp, 0, vec_num.size() - 1);
     clock_t end_time = clock();
-    // gettimeofday(&tv2, NULL);
     Info_begin(1);
     printtime(start_time, end_time, "vector : ");
 }
@@ -114,14 +124,6 @@ void PmergeMe::merge(std::deque<int>& left, std::deque<int>& right, std::deque<i
     }
 }
 
-void print(std::deque<int>& d) {
-    std::deque<int>::iterator it = d.begin();
-    for(;it!=d.end(); it++) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-}
-
 void PmergeMe::mergeInsertionSort(std::deque<int>& values) {
     if(values.size() < 2){
         return;
@@ -138,10 +140,6 @@ void PmergeMe::mergeInsertionSort(std::deque<int>& values) {
     mergeInsertionSort(left);
     mergeInsertionSort(right);
     merge(left, right, result);
-    std::cout << "value ";
-    print(values);
-    std::cout << "result ";
-    print(result);
     std::copy(result.begin(), result.end(), values.begin());
 }
 
@@ -151,27 +149,8 @@ void PmergeMe::printtime(clock_t start_time, clock_t end_time, std::string cont)
 }
 
 void PmergeMe::mergeDeque(void) {
-    /* for (std::deque<int>::iterator i = deq_num.begin(); i != deq_num.end(); i++) {
-        std::cout << *i << " ";
-    }
-    std::cout << std::endl; */
-    /* struct timeval  tv1, tv2;
-    gettimeofday(&tv1, NULL); */
     clock_t start_time = clock();
     mergeInsertionSort(deq_num);
     clock_t end_time = clock();
-    // gettimeofday(&tv2, NULL);
     printtime(start_time, end_time, "deque : ");
-    /* for (std::deque<int>::iterator i = deq_num.begin(); i != deq_num.end(); i++) {
-        std::cout << *i << " ";
-    }
-    std::cout << std::endl; */
-    
 }
-
-
-/* struct timeval  tv1, tv2;
-gettimeofday(&tv1, NULL);
-gettimeofday(&tv2, NULL);
-    std::cout << "time " << (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
-     (double) (tv2.tv_sec - tv1.tv_sec); */

@@ -1,11 +1,23 @@
 #include "RPN.hpp"
 
+RPN::RPN() {}
+RPN::~RPN() {}
+
+RPN::RPN(const RPN &r) {
+    *this = r;
+}
+
+RPN& RPN::operator=(const RPN &r) {
+    this->_stack = r._stack;
+    return *this;
+}
+
 double RPN::evaluate(const std::string& expr) {
     std::istringstream iss(expr);
     std::string token;
     while(iss >> token) {
         if(token.length() > 1) {
-            throw std::runtime_error("Error: Only between 0-9");
+            throw MyExc("Error: Only between 0-9");
         }
         if(isdigit(token[0])) {
             std::stringstream ss(token);
@@ -14,7 +26,7 @@ double RPN::evaluate(const std::string& expr) {
             _stack.push(value);
         } else if (token == "+" || token == "-" || token == "*" || token == "/") {
             if (_stack.size() < 2) {
-                throw std::runtime_error("Error: not enough operands");
+                throw MyExc("Error: not enough operands");
             }
             double rhs = _stack.top();
             _stack.pop();
@@ -28,16 +40,16 @@ double RPN::evaluate(const std::string& expr) {
                 _stack.push(lhs * rhs);
             } else if (token == "/") {
                 if (rhs == 0) {
-                    throw std::runtime_error("Error: division by zero");
+                    throw MyExc("Error: division by zero");
                 }
                 _stack.push(lhs / rhs);
             }
         } else {
-            throw std::runtime_error("Error: invalid token");
+            throw MyExc("Error: invalid token");
         }
     }
     if (_stack.size() != 1) {
-        throw std::runtime_error("Error: too many operands");
+        throw MyExc("Error: too many operands");
     }
     double res = _stack.top();
     _stack.pop();

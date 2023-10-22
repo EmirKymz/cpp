@@ -1,12 +1,17 @@
 #include "BitcoinExchange.hpp"
 
+BitcoinExchange::BitcoinExchange() {}
+BitcoinExchange::~BitcoinExchange() {}
 
-/* void    BitcoinExchange::printData() {
-    std::map<std::string, double>::iterator it;
-    for(it = data.begin(); it != data.end(); ++it){
-        std::cout << "--| " << it->first << "  " << it->second << std::endl;
-    }
-} */
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &b) {
+    *this = b;
+}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &b) {
+    this->data = b.data;
+    this->exchange = b.exchange;
+    return *this;
+}
 
 void BitcoinExchange::readData() {
     std::ifstream file("data.csv");
@@ -33,7 +38,7 @@ double BitcoinExchange::give_back_data(std::string key, double value) {
     std::map<std::string, double>::iterator it = data.upper_bound(key);
     if (it != data.begin())
         return((--it)->second * value);
-    return(0);  // burada datanin beginincisi * value yapsam mi
+    return(0);
 }
 
 bool    BitcoinExchange::DateCheck(std::string key_s) {
